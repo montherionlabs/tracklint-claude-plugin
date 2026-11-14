@@ -1,0 +1,15 @@
+{
+  "name": "montherion",
+  "description": "Tracklint plugins for Claude, published by Montherion Labs.",
+  "owner": {
+    "name": "Montherion Labs",
+    "email": "montherionlabs@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "tracklint",
+      "source": "./plugins/tracklint",
+      "description": "Write and check tracking plans for GA4, Google Ads, Meta Pixel and TikTok Pixel, and decode tracking requests with the local Tracklint MCP server."
+    }
+  ]
+}
