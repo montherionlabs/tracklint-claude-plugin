@@ -2,7 +2,7 @@
   "mcpServers": {
     "tracklint": {
       "command": "npx",
-      "args": ["-y", "@montherion/tracklint-mcp@0.2.0"]
+      "args": ["-y", "@montherion/tracklint-mcp@0.3.0"]
     }
   }
 }
