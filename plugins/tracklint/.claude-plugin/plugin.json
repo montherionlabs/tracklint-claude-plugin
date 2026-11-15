@@ -1,8 +1,8 @@
 {
   "name": "tracklint",
   "displayName": "Tracklint",
-  "version": "0.1.0",
-  "description": "Write and check tracking plans in Tracklint's CSV format for GA4, Google Ads, Meta Pixel and TikTok Pixel, and decode single GA4, Meta Pixel or TikTok Pixel requests with the local Tracklint MCP server.",
+  "version": "0.2.0",
+  "description": "Write and check tracking plans in Tracklint's CSV format for GA4, Google Ads, Meta Pixel and TikTok Pixel, and decode single GA4, Google Ads conversion, Meta Pixel or TikTok Pixel requests with the local Tracklint MCP server.",
   "author": {
     "name": "Montherion Labs",
     "email": "montherionlabs@gmail.com",

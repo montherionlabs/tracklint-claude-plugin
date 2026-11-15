@@ -1,7 +1,7 @@
 # Tracklint for Claude
 
 Write and check tracking plans for online stores and lead forms, and decode the tracking requests a browser sends to
-GA4, Meta Pixel and TikTok Pixel. Tracklint is a QA aid for analysts, developers and agencies who need to know which
+GA4, Google Ads (conversions), Meta Pixel and TikTok Pixel. Tracklint is a QA aid for analysts, developers and agencies who need to know which
 events a site should send and what a given request actually carries.
 
 ## What the plugin includes
@@ -10,11 +10,11 @@ events a site should send and what a given request actually carries.
   Google Ads, Meta Pixel and TikTok Pixel: one row per expected event, with required parameters, rules (`value > 0`,
   `currency is iso4217`, `each item has item_id|item_name`…), counts and consent types. The same plan works in the
   Tracklint browser extension and its web validator.
-- **`decode-tracking-request` skill.** Claude decodes one GA4, Meta Pixel or TikTok Pixel request copied from DevTools
-  and explains its warnings: purchases without an order or event ID, values without a currency, invalid currency
-  codes, unhashed advanced matching data, emails, phone numbers, WhatsApp links or credential-like values sent to the
-  platform.
-- **Tracklint MCP server** (`@montherion/tracklint-mcp` 0.2.0). Two read-only tools, `tracklint_check_plan` and
+- **`decode-tracking-request` skill.** Claude decodes one GA4, Google Ads conversion, Meta Pixel or TikTok Pixel
+  request copied from DevTools and explains its warnings: purchases without an order or event ID, Google Ads
+  conversions without their own transaction ID, values without a currency, invalid currency codes, unhashed advanced
+  matching data, emails, phone numbers, WhatsApp links or credential-like values sent to the platform.
+- **Tracklint MCP server** (`@montherion/tracklint-mcp` 0.3.0). Two read-only tools, `tracklint_check_plan` and
   `tracklint_decode_request`, that the skills call.
 
 ## Where it works
@@ -24,6 +24,13 @@ events a site should send and what a given request actually carries.
 | Claude Code | Yes | Yes |
 | Cowork sessions on your computer (desktop app) | Yes | Yes |
 | claude.ai chat | Yes | No local MCP tools. Claude can review plans and read supplied requests manually, and labels that work as manual. |
+
+Install in Claude Code:
+
+```
+/plugin marketplace add montherionlabs/tracklint-claude-plugin
+/plugin install tracklint@montherion
+```
 
 The MCP server needs **Node.js 22** (22.23.4 or later in the 22.x line) or **Node.js 26** (26.9.0 or later in the 26.x
 line), with `npx` available. It needs no account, key or environment variable.
@@ -35,6 +42,7 @@ Ask in your own words, for example:
 - "Write a tracking plan for a WooCommerce store with GA4 and Meta Pixel, with a cookie banner in Consent Mode advanced."
 - "Check this plan" and paste the CSV.
 - "What's wrong with this purchase request?" and paste the URL and body of a `/g/collect` request.
+- "Does this Google Ads conversion carry the order ID?" and paste the URL of a `/pagead/conversion/` request.
 
 Both MCP tools are free to use. The browser extension and a Tracklint Pro subscription are not required to create or
 check plans or decode requests with this plugin.
@@ -44,10 +52,10 @@ countries where it is available, and record the journey: https://tracklint.netli
 
 ## Privacy Policy: what the plugin runs, sends and fetches
 
-- **What runs.** The plugin starts npx -y @montherion/tracklint-mcp@0.2.0. The requested server version is fixed.
+- **What runs.** The plugin starts npx -y @montherion/tracklint-mcp@0.3.0. The requested server version is fixed.
   npx may reuse a matching local installation or download the package into npm's local cache. It uses the configured
   npm registry, normally https://registry.npmjs.org/, and may contact it on subsequent starts. The -y option accepts
-  npm's installation prompt. Version 0.2.0 declares no third-party package dependencies or install scripts.
+  npm's installation prompt. Version 0.3.0 declares no third-party package dependencies or install scripts.
 - **npm.** When npm accesses its registry, npm may collect technical request data, including the requested package, IP
   address and software versions, under https://docs.npmjs.com/policies/privacy/. Tracklint does not send the inspected
   CSV or tracking request to npm.
@@ -74,11 +82,13 @@ countries where it is available, and record the journey: https://tracklint.netli
 - One request at a time: up to 16 KiB of URL, 256 KiB of body and 50 events. Plans: up to 500 rows and 256 KiB. Each
   limit returns an explicit error; nothing is cut silently.
 - These are input ceilings, not a guarantee that every input below them produces a result. The complete response is
-  limited to 128 KiB and processing to 5 seconds. The decoder also limits events to 100 parameters and user_data to 50
-  keys. This plugin does not audit complete HAR files, validate recorded journeys, export reports or connect to the
+  limited to 128 KiB and processing to 5 seconds. The decoder also limits events to 100 parameters and the user_data,
+  user_properties and data maps to 50 keys each. This plugin does not audit complete HAR files, validate recorded journeys, export reports or connect to the
   browser extension.
-- Google Ads requests are not decoded by the MCP server (version 0.2.0); the Tracklint browser extension reads them.
-  Plans do accept `google_ads` rows.
+- Google Ads: since version 0.3.0 the MCP server decodes conversions sent by gtag.js, one request at a time. Other
+  Google Ads requests (view-through, remarketing, page measurement, the tag library) are only identified from their
+  address. A request does not show whether Google Ads deduplicated or counted a conversion. Plans accept `google_ads`
+  rows.
 - Tracklint checks what the browser sends. It does not verify processing inside Google Analytics, Google Ads, Meta or
   TikTok, server-to-server integrations (Conversions API, Events API) or legal compliance, and its results are not
   legal advice.
