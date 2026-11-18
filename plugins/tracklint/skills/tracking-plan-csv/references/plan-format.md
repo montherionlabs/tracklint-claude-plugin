@@ -1,6 +1,8 @@
 # Tracklint plan format
 
-This is the format that the Tracklint extension, its web validator and the `tracklint_check_plan` tool read.
+This is the format that the Tracklint extension, its web validator and the `tracklint_check_plan` tool read. This
+edition of the plugin doesn't include the tool: check plans by hand against this page. The sections about what the
+tool returns describe that tool only.
 
 ## File
 
