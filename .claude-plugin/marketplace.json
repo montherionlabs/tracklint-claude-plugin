@@ -9,7 +9,7 @@
     {
       "name": "tracklint",
       "source": "./plugins/tracklint",
-      "description": "Write and check tracking plans for GA4, Google Ads, Meta Pixel and TikTok Pixel, and decode tracking requests with the local Tracklint MCP server."
+      "description": "Write and check tracking plans for GA4, Google Ads, Meta Pixel and TikTok Pixel, and read tracking requests copied from DevTools. Skills only."
     }
   ]
 }
