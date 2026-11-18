@@ -1,5 +1,8 @@
 # Codes returned by `tracklint_decode_request`
 
+This edition of the plugin doesn't include the tool. When you read a request by hand, use this list as a checklist and
+say that the findings come from a manual reading.
+
 Each warning has a `code`, the event it belongs to (`hitIndex`, from 0) and, when it comes from one parameter, that
 parameter's position (`paramIndex`). The tool never returns the value that triggered it.
 
