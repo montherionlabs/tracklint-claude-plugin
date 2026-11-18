@@ -1,18 +1,12 @@
 # Tracklint plugin for Claude
 
 This repository holds the Tracklint plugin for Claude (`plugins/tracklint`): two skills for writing and checking
-tracking plans and for decoding GA4, Google Ads conversion, Meta Pixel and TikTok Pixel requests, plus the local
-Tracklint MCP server they call. The plugin's README describes what it includes, where it works and what it runs, sends and fetches:
-[plugins/tracklint/README.md](plugins/tracklint/README.md).
+tracking plans and for reading GA4, Google Ads conversion, Meta Pixel and TikTok Pixel requests.
 
-## Install in Claude Code
+## Editions
 
-```
-/plugin marketplace add montherionlabs/tracklint-claude-plugin
-/plugin install tracklint@montherion
-```
-
-Requires Node.js 22 (22.23.4 or later) or 26 (26.9.0 or later).
+- **`directory` branch: the skills-only edition prepared for submission to the Claude directory.** It starts no server or program. See [plugins/tracklint/README.md](plugins/tracklint/README.md) for its features, scope and privacy policy.
+- **`main` branch: a separate edition for installation from this repository in Claude Code.** It includes skills and a local Tracklint MCP server. It is not part of the directory submission and is not required to use the skills-only edition. Its README documents its requirements and data handling.
 
 ## About Tracklint
 
