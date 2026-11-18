@@ -1,8 +1,8 @@
 {
   "name": "tracklint",
   "displayName": "Tracklint",
-  "version": "0.2.0",
-  "description": "Write and check tracking plans in Tracklint's CSV format for GA4, Google Ads, Meta Pixel and TikTok Pixel, and decode single GA4, Google Ads conversion, Meta Pixel or TikTok Pixel requests with the local Tracklint MCP server.",
+  "version": "0.2.1",
+  "description": "Write and check tracking plans in Tracklint's CSV format for GA4, Google Ads, Meta Pixel and TikTok Pixel, and read single GA4, Google Ads conversion, Meta Pixel or TikTok Pixel requests copied from DevTools. Skills only: the plugin starts no server or program.",
   "author": {
     "name": "Montherion Labs",
     "email": "montherionlabs@gmail.com",
@@ -21,7 +21,7 @@
     "analytics-qa"
   ],
   "icon": "./icon.png",
-  "documentationUrl": "https://github.com/montherionlabs/tracklint-claude-plugin/tree/main/plugins/tracklint#readme",
+  "documentationUrl": "https://github.com/montherionlabs/tracklint-claude-plugin/tree/directory/plugins/tracklint#readme",
   "supportUrl": "https://github.com/montherionlabs/tracklint-claude-plugin/issues",
-  "privacyPolicyUrl": "https://tracklint.netlify.app/privacy#mcp"
+  "privacyPolicyUrl": "https://github.com/montherionlabs/tracklint-claude-plugin/blob/directory/plugins/tracklint/README.md#privacy-policy"
 }
